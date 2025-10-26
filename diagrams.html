@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcium Demo - Flow Diagrams</title>
+    
+    <!-- Brand Typography - Inter & Roboto from Kojable Design System -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <style>
+        /* ===== BRAND-ALIGNED DIAGRAM STYLES ===== */
+        /* Color palette updated to match company brand identity from css/styles.css */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #ffffff;
+            color: #172121;
+            line-height: 1.6;
+        }
+
+        /* Hero section with brand identity - gradient background only */
+        .hero {
+            background: linear-gradient(135deg, #62afff 0%, #12eb93 100%);
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-logo {
+            width: 80px;
+            height: auto;
+            margin: 0 auto 20px;
+            filter: drop-shadow(0 4px 10px rgba(23, 33, 33, 0.3));
+        }
+
+        .hero h1 {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            color: #172121;
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #172121;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            margin-bottom: 60px;
+            background: rgba(23, 33, 33, 0.08);
+            border-radius: 12px;
+            padding: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .tab {
+            flex: 1;
+            max-width: 250px;
+            padding: 18px 30px;
+            cursor: pointer;
+            font-size: 1.05em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            text-align: center;
+            color: #172121;
+        }
+
+        .tab:hover {
+            background: rgba(98, 175, 255, 0.2);
+            color: #172121;
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, #62afff 0%, #4a9aeb 100%);
+            color: #ffffff;
+            box-shadow: 0 4px 20px rgba(98, 175, 255, 0.4);
+        }
+
+        .diagram-container {
+            display: none;
+            background: rgba(23, 33, 33, 0.03);
+            border-radius: 24px;
+            padding: 50px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(23, 33, 33, 0.1);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .diagram-container.active {
+            display: block;
+            animation: fadeIn 0.6s ease;
+        }
+
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0);
+            }
+        }
+
+        .diagram-title {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #62afff 0%, #12eb93 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .diagram-subtitle {
+            color: rgba(23, 33, 33, 0.7);
+            margin-bottom: 40px;
+            font-size: 1.2em;
+        }
+
+        svg {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 4px 20px rgba(0,0,0,0.1));
+        }
+
+        .stage-box {
+            fill: rgba(23, 33, 33, 0.05);
+            stroke: #62afff;
+            stroke-width: 2;
+            rx: 12;
+            transition: all 0.3s ease;
+        }
+
+        .stage-box:hover {
+            fill: rgba(98, 175, 255, 0.15);
+        }
+
+        .stage-title {
+            font-size: 18px;
+            font-weight: 700;
+            fill: #172121;
+        }
+
+        .stage-desc {
+            font-size: 14px;
+            fill: rgba(23, 33, 33, 0.8);
+        }
+
+        .arrow {
+            stroke: #62afff;
+            stroke-width: 3;
+            fill: none;
+            marker-end: url(#arrowhead);
+        }
+
+        .component-box {
+            fill: rgba(33, 150, 243, 0.15);
+            stroke: #2196F3;
+            stroke-width: 2;
+            rx: 10;
+        }
+
+        .mpc-box {
+            fill: rgba(255, 152, 0, 0.15);
+            stroke: #ff9800;
+            stroke-width: 2;
+            rx: 10;
+        }
+
+        .blockchain-box {
+            fill: rgba(156, 39, 176, 0.15);
+            stroke: #9c27b0;
+            stroke-width: 2;
+            rx: 10;
+        }
+
+        .data-flow {
+            stroke: #4CAF50;
+            stroke-width: 2;
+            fill: none;
+            stroke-dasharray: 8,4;
+            animation: dash 2s linear infinite;
+        }
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: -12;
+            }
+        }
+
+        .secure-zone {
+            fill: rgba(18, 235, 147, 0.08);
+            stroke: #12eb93;
+            stroke-width: 3;
+            stroke-dasharray: 12,6;
+            rx: 12;
+        }
+
+        .legend {
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(23, 33, 33, 0.05);
+            border-radius: 16px;
+            border: 1px solid rgba(23, 33, 33, 0.1);
+        }
+
+        .legend-title {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1.4em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #172121;
+        }
+
+        .legend-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px;
+            background: rgba(23, 33, 33, 0.03);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .legend-item:hover {
+            background: rgba(23, 33, 33, 0.08);
+            transform: translateX(5px);
+        }
+
+        .legend-color {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            border: 2px solid;
+            flex-shrink: 0;
+        }
+
+        .highlight-text {
+            background: linear-gradient(135deg, #62afff 0%, #12eb93 100%);
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        .note-box {
+            background: rgba(18, 235, 147, 0.1);
+            border-left: 4px solid #12eb93;
+            padding: 25px;
+            margin-top: 30px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .note-title {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-weight: 700;
+            color: #12eb93;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        .warning-box {
+            background: rgba(255, 152, 0, 0.1);
+            border-left: 4px solid #ff9800;
+            padding: 25px;
+            margin-top: 30px;
+            border-radius: 8px;
+        }
+
+        .warning-title {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-weight: 700;
+            color: #ff9800;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab {
+                max-width: 100%;
+            }
+            
+            .diagram-container {
+                padding: 25px;
+            }
+
+            .diagram-title {
+                font-size: 1.8em;
+            }
+        }
+
+        .stage-number {
+            fill: #62afff;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .glow {
+            filter: drop-shadow(0 0 8px rgba(98, 175, 255, 0.6));
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <!-- Brand identity: Company logo/isotype -->
+        <img src="logos_21102025/isotype_black.png" alt="Company Logo" class="hero-logo">
+        <h1>🔐 Arcium PII Anonymization</h1>
+        <p>Privacy-Preserving Data Processing with Multi-Party Computation</p>
+    </div>
+
+    <div class="container">
+        <div class="tabs">
+            <div class="tab active" onclick="showDiagram('user-flow')">User Flow</div>
+            <div class="tab" onclick="showDiagram('system-arch')">System Architecture</div>
+            <div class="tab" onclick="showDiagram('data-flow')">Data Flow</div>
+            <div class="tab" onclick="showDiagram('mpc-detail')">MPC Deep Dive</div>
+        </div>
+
+        <!-- USER FLOW DIAGRAM -->
+        <div id="user-flow" class="diagram-container active">
+            <h2 class="diagram-title">User Flow</h2>
+            <p class="diagram-subtitle">Five-stage pipeline from URL to anonymized output</p>
+            
+            <svg viewBox="0 0 800 1100" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#62afff" />
+                    </marker>
+                    <linearGradient id="stageGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#62afff;stop-opacity:0.3" />
+                        <stop offset="100%" style="stop-color:#12eb93;stop-opacity:0.3" />
+                    </linearGradient>
+                </defs>
+
+                <!-- Stage 1: URL Input -->
+                <rect class="stage-box" x="50" y="50" width="700" height="110" fill="url(#stageGradient)"/>
+                <circle cx="90" cy="90" r="25" fill="#62afff"/>
+                <text x="90" y="98" text-anchor="middle" class="stage-number" fill="white">1</text>
+                <text class="stage-title" x="130" y="85" font-size="20">URL Input</text>
+                <text class="stage-desc" x="130" y="112">User submits webpage URL containing personal information</text>
+
+                <line class="arrow" x1="400" y1="160" x2="400" y2="200" />
+
+                <!-- Stage 2: Content Extraction -->
+                <rect class="stage-box" x="50" y="200" width="700" height="110" fill="url(#stageGradient)"/>
+                <circle cx="90" cy="240" r="25" fill="#62afff"/>
+                <text x="90" y="248" text-anchor="middle" class="stage-number" fill="white">2</text>
+                <text class="stage-title" x="130" y="235" font-size="20">Content Extraction</text>
+                <text class="stage-desc" x="130" y="262">Backend scrapes webpage and parses HTML structure</text>
+
+                <line class="arrow" x1="400" y1="310" x2="400" y2="350" />
+
+                <!-- Stage 3: PII Detection -->
+                <rect class="stage-box" x="50" y="350" width="700" height="130" fill="url(#stageGradient)"/>
+                <circle cx="90" cy="395" r="25" fill="#62afff"/>
+                <text x="90" y="403" text-anchor="middle" class="stage-number" fill="white">3</text>
+                <text class="stage-title" x="130" y="390" font-size="20">PII Detection</text>
+                <text class="stage-desc" x="130" y="417">Identify sensitive information:</text>
+                <text class="stage-desc" x="150" y="440">• Person Names • Email Addresses • Phone Numbers</text>
+
+                <line class="arrow" x1="400" y1="480" x2="400" y2="520" stroke="#ff9800" stroke-width="4"/>
+                <text x="430" y="505" fill="#ff9800" font-weight="700" font-size="15">🔒 ENCRYPTED</text>
+
+                <!-- Stage 4: Arcium MPC Anonymization (HIGHLIGHTED) -->
+                <rect x="50" y="520" width="700" height="180" fill="rgba(255, 152, 0, 0.15)" stroke="#ff9800" stroke-width="4" rx="12" class="glow"/>
+                <circle cx="90" cy="575" r="25" fill="#ff9800"/>
+                <text x="90" y="583" text-anchor="middle" class="stage-number" fill="white">4</text>
+                <text class="stage-title" x="130" y="570" font-size="20" fill="#ff9800">⭐ Arcium MPC Anonymization</text>
+                <text class="stage-desc" x="130" y="600" font-weight="700">Multi-Party Computation ensures zero plaintext exposure</text>
+                <text class="stage-desc" x="130" y="625">1. Encrypt and split data into shares across multiple nodes</text>
+                <text class="stage-desc" x="130" y="648">2. Nodes collaboratively compute without seeing plaintext</text>
+                <text class="stage-desc" x="130" y="671">3. Generate deterministic ARX token</text>
+
+                <line class="arrow" x1="400" y1="700" x2="400" y2="740" stroke="#12eb93" stroke-width="4"/>
+
+                <!-- Stage 5: Final JSON Assembly -->
+                <rect class="stage-box" x="50" y="740" width="700" height="140" fill="rgba(18, 235, 147, 0.15)" stroke="#12eb93" stroke-width="3"/>
+                <circle cx="90" cy="790" r="25" fill="#12eb93"/>
+                <text x="90" y="798" text-anchor="middle" class="stage-number" fill="white">5</text>
+                <text class="stage-title" x="130" y="785" font-size="20" fill="#12eb93">Anonymized Output</text>
+                <text class="stage-desc" x="130" y="812">Replace all PII with ARX tokens in content</text>
+                <text class="stage-desc" x="130" y="835">Generate anonymization map and cryptographic proof</text>
+                <text class="stage-desc" x="130" y="858" font-weight="700" fill="#12eb93">✅ Return secure, privacy-preserving JSON</text>
+
+                <!-- Success Box -->
+                <rect x="200" y="920" width="400" height="70" fill="#12eb93" stroke="none" rx="12"/>
+                <text x="400" y="950" text-anchor="middle" fill="white" font-size="18" font-weight="700">Pipeline Complete</text>
+                <text x="400" y="975" text-anchor="middle" fill="white" font-size="14">Zero Plaintext Exposure Guaranteed</text>
+            </svg>
+
+            <div class="note-box">
+                <div class="note-title">🔑 Key Innovation</div>
+                <div>At <span class="highlight-text">Stage 4</span>, the original PII enters the encrypted MPC environment and never emerges in plaintext. The Arcium network processes encrypted shares using Multi-Party Computation, ensuring no single party can reconstruct the sensitive data. Only the anonymized ARX token is returned.</div>
+            </div>
+        </div>
+
+        <!-- SYSTEM ARCHITECTURE DIAGRAM -->
+        <div id="system-arch" class="diagram-container">
+            <h2 class="diagram-title">System Architecture</h2>
+            <p class="diagram-subtitle">Component interaction and security boundaries</p>
+            
+            <svg viewBox="0 0 1000 950" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#62afff" />
+                    </marker>
+                </defs>
+
+                <!-- User/Frontend Layer -->
+                <rect class="component-box" x="350" y="30" width="300" height="90"/>
+                <text class="stage-title" x="500" y="65" text-anchor="middle" font-size="18">Web Frontend</text>
+                <text class="stage-desc" x="500" y="90" text-anchor="middle">React Application</text>
+                <text class="stage-desc" x="500" y="108" text-anchor="middle" font-size="12">URL Input + Results Display</text>
+
+                <line class="arrow" x1="500" y1="120" x2="500" y2="170" />
+                <text x="520" y="150" fill="#62afff" font-size="13">HTTP POST</text>
+
+                <!-- Backend API Layer -->
+                <rect class="component-box" x="300" y="170" width="400" height="110"/>
+                <text class="stage-title" x="500" y="205" text-anchor="middle" font-size="18">Backend API Server</text>
+                <text class="stage-desc" x="500" y="230" text-anchor="middle">Node.js + Express + TypeScript</text>
+                <text class="stage-desc" x="500" y="250" text-anchor="middle">AWS EC2 Instance</text>
+                <text class="stage-desc" x="500" y="268" text-anchor="middle" font-size="12">Endpoints: /health, /api/anonymize</text>
+
+                <!-- Processing Components -->
+                <g>
+                    <!-- Web Scraper -->
+                    <rect class="component-box" x="50" y="340" width="220" height="85"/>
+                    <text class="stage-title" x="160" y="370" text-anchor="middle" font-size="15">Web Scraper</text>
+                    <text class="stage-desc" x="160" y="393" text-anchor="middle" font-size="12">Axios + Cheerio</text>
+                    <text class="stage-desc" x="160" y="411" text-anchor="middle" font-size="12">HTML Extraction</text>
+                    <line class="arrow" x1="350" y1="250" x2="200" y2="340" />
+
+                    <!-- PII Detector -->
+                    <rect class="component-box" x="390" y="340" width="220" height="85"/>
+                    <text class="stage-title" x="500" y="370" text-anchor="middle" font-size="15">PII Detector</text>
+                    <text class="stage-desc" x="500" y="393" text-anchor="middle" font-size="12">Regex Patterns</text>
+                    <text class="stage-desc" x="500" y="411" text-anchor="middle" font-size="12">Identity Recognition</text>
+                    <line class="arrow" x1="500" y1="280" x2="500" y2="340" />
+
+                    <!-- JSON Assembler -->
+                    <rect class="component-box" x="730" y="340" width="220" height="85"/>
+                    <text class="stage-title" x="840" y="370" text-anchor="middle" font-size="15">JSON Assembler</text>
+                    <text class="stage-desc" x="840" y="393" text-anchor="middle" font-size="12">Result Formatter</text>
+                    <text class="stage-desc" x="840" y="411" text-anchor="middle" font-size="12">Metadata Generation</text>
+                    <line class="arrow" x1="650" y1="250" x2="800" y2="340" />
+                </g>
+
+                <!-- Secure MPC Zone -->
+                <rect class="secure-zone" x="150" y="480" width="700" height="340"/>
+                <text x="500" y="510" text-anchor="middle" fill="#12eb93" font-size="18" font-weight="700">🔒 SECURE MPC ZONE</text>
+                <text x="500" y="535" text-anchor="middle" fill="#12eb93" font-size="14">No Plaintext Data Exposed</text>
+
+                <!-- Arcium MXE Network -->
+                <rect class="mpc-box" x="180" y="560" width="640" height="100" class="glow"/>
+                <text class="stage-title" x="500" y="590" text-anchor="middle" fill="#ff9800" font-size="18">Arcium MXE Network</text>
+                <text class="stage-desc" x="500" y="615" text-anchor="middle">Multi-Party Computation Cluster</text>
+                <text class="stage-desc" x="500" y="638" text-anchor="middle" font-weight="700">Confidential Instruction: anonymize_pii</text>
+
+                <line class="arrow" x1="500" y1="425" x2="500" y2="560" stroke="#ff9800" stroke-width="3"/>
+                <text x="520" y="495" fill="#ff9800" font-size="13" font-weight="700">Encrypted Shares</text>
+
+                <!-- MPC Nodes -->
+                <g>
+                    <rect class="mpc-box" x="210" y="690" width="160" height="75"/>
+                    <text x="290" y="720" text-anchor="middle" font-size="14" font-weight="700">Arx Node 1</text>
+                    <text x="290" y="742" text-anchor="middle" font-size="12">Share 1/3</text>
+                    <text x="290" y="758" text-anchor="middle" font-size="11" fill="#ff9800">Blind Compute</text>
+
+                    <rect class="mpc-box" x="420" y="690" width="160" height="75"/>
+                    <text x="500" y="720" text-anchor="middle" font-size="14" font-weight="700">Arx Node 2</text>
+                    <text x="500" y="742" text-anchor="middle" font-size="12">Share 2/3</text>
+                    <text x="500" y="758" text-anchor="middle" font-size="11" fill="#ff9800">Blind Compute</text>
+
+                    <rect class="mpc-box" x="630" y="690" width="160" height="75"/>
+                    <text x="710" y="720" text-anchor="middle" font-size="14" font-weight="700">Arx Node 3</text>
+                    <text x="710" y="742" text-anchor="middle" font-size="12">Share 3/3</text>
+                    <text x="710" y="758" text-anchor="middle" font-size="11" fill="#ff9800">Blind Compute</text>
+
+                    <line class="data-flow" x1="290" y1="660" x2="290" y2="690"/>
+                    <line class="data-flow" x1="500" y1="660" x2="500" y2="690"/>
+                    <line class="data-flow" x1="710" y1="660" x2="710" y2="690"/>
+                </g>
+
+                <!-- Solana Blockchain -->
+                <rect class="blockchain-box" x="250" y="800" width="500" height="85"/>
+                <text class="stage-title" x="500" y="835" text-anchor="middle" fill="#9c27b0" font-size="17">Solana Devnet</text>
+                <text class="stage-desc" x="500" y="858" text-anchor="middle">Coordination & Verification Layer</text>
+                <text class="stage-desc" x="500" y="876" text-anchor="middle" font-size="11">Program: anonymization_mxe</text>
+
+                <line class="data-flow" x1="290" y1="765" x2="400" y2="800"/>
+                <line class="data-flow" x1="500" y1="765" x2="500" y2="800"/>
+                <line class="data-flow" x1="710" y1="765" x2="600" y2="800"/>
+
+                <line class="arrow" x1="750" y1="640" x2="840" y2="425" stroke="#12eb93" stroke-width="3"/>
+                <text x="800" y="550" fill="#12eb93" font-size="13" font-weight="700">ARX Token</text>
+            </svg>
+
+            <div class="legend">
+                <div class="legend-title">Component Legend</div>
+                <div class="legend-items">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: rgba(33, 150, 243, 0.15); border-color: #2196F3;"></div>
+                        <span>Application Layer</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: rgba(255, 152, 0, 0.15); border-color: #ff9800;"></div>
+                        <span>MPC Network</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: rgba(156, 39, 176, 0.15); border-color: #9c27b0;"></div>
+                        <span>Blockchain Layer</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: rgba(18, 235, 147, 0.08); border-color: #12eb93; border-style: dashed;"></div>
+                        <span>Secure Zone</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="note-box">
+                <div class="note-title">🏗️ Architecture Highlights</div>
+                <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                    <li><strong>Stateless Backend:</strong> No PII persisted on server</li>
+                    <li><strong>Distributed Trust:</strong> Each node holds only 1/3 of secret</li>
+                    <li><strong>Blockchain Orchestration:</strong> Solana ensures correct execution</li>
+                    <li><strong>Zero-Knowledge Property:</strong> Backend receives tokens without accessing original PII</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- DATA FLOW DIAGRAM -->
+        <div id="data-flow" class="diagram-container">
+            <h2 class="diagram-title">Data Flow</h2>
+            <p class="diagram-subtitle">Tracking sensitive information through the system</p>
+            
+            <svg viewBox="0 0 900 1050" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#62afff" />
+                    </marker>
+                </defs>
+
+                <!-- Input: Raw PII -->
+                <rect x="300" y="40" width="300" height="75" fill="rgba(244, 67, 54, 0.2)" stroke="#f44336" stroke-width="3" rx="10"/>
+                <text x="450" y="70" text-anchor="middle" font-size="17" font-weight="700" fill="#f44336">INPUT: Raw PII</text>
+                <text x="450" y="95" text-anchor="middle" font-size="15">"Albert Einstein"</text>
+
+                <line class="arrow" x1="450" y1="115" x2="450" y2="165"/>
+
+                <!-- Backend Receives -->
+                <rect class="component-box" x="250" y="165" width="400" height="70"/>
+                <text x="450" y="195" text-anchor="middle" font-size="15" font-weight="700">Backend Receives URL</text>
+                <text x="450" y="220" text-anchor="middle" font-size="13">https://wikipedia.org/wiki/Albert_Einstein</text>
+
+                <line class="arrow" x1="450" y1="235" x2="450" y2="285"/>
+
+                <!-- Scraping -->
+                <rect class="component-box" x="250" y="285" width="400" height="60"/>
+                <text x="450" y="315" text-anchor="middle" font-size="15" font-weight="700">Content Extraction</text>
+                <text x="450" y="335" text-anchor="middle" font-size="12">Scrape full page including PII</text>
+
+                <line class="arrow" x1="450" y1="345" x2="450" y2="395"/>
+
+                <!-- Detection -->
+                <rect x="250" y="395" width="400" height="75" fill="rgba(255, 235, 59, 0.15)" stroke="#FBC02D" stroke-width="2" rx="10"/>
+                <text x="450" y="425" text-anchor="middle" font-size="15" font-weight="700">PII Detection</text>
+                <text x="450" y="450" text-anchor="middle" font-size="13">Identifies: "Albert Einstein" at position 42</text>
+
+                <line class="arrow" x1="450" y1="470" x2="450" y2="520" stroke="#f44336" stroke-width="4"/>
+                <text x="480" y="500" fill="#f44336" font-size="14" font-weight="700">ENCRYPTION POINT</text>
+
+                <!-- Encryption -->
+                <rect x="250" y="520" width="400" height="95" fill="rgba(18, 235, 147, 0.15)" stroke="#12eb93" stroke-width="3" rx="10"/>
+                <text x="450" y="550" text-anchor="middle" font-size="15" font-weight="700">🔐 Encryption Layer</text>
+                <text x="450" y="575" text-anchor="middle" font-size="13">Input: "Albert Einstein"</text>
+                <text x="450" y="598" text-anchor="middle" font-size="13" fill="#12eb93" font-weight="700">Output: [Share₁, Share₂, Share₃]</text>
+
+                <line class="arrow" x1="450" y1="615" x2="450" y2="665" stroke="#12eb93" stroke-width="3"/>
+
+                <!-- MPC Zone -->
+                <rect class="secure-zone" x="100" y="665" width="700" height="240"/>
+                <text x="450" y="695" text-anchor="middle" fill="#12eb93" font-size="17" font-weight="700">🔒 MULTI-PARTY COMPUTATION ZONE</text>
+                <text x="450" y="718" text-anchor="middle" fill="#12eb93" font-size="13">No Single Node Sees Plaintext</text>
+
+                <!-- MPC Processing -->
+                <rect class="mpc-box" x="130" y="740" width="640" height="80"/>
+                <text x="450" y="770" text-anchor="middle" font-size="14" font-weight="700">Distributed Computation</text>
+                <text x="450" y="793" text-anchor="middle" font-size="12">Node 1 + Node 2 + Node 3 = Collaborative Hash</text>
+
+                <!-- MPC Nodes Detail -->
+                <g>
+                    <rect class="mpc-box" x="150" y="840" width="180" height="50"/>
+                    <text x="240" y="865" text-anchor="middle" font-size="12">Node 1: Share₁</text>
+
+                    <rect class="mpc-box" x="360" y="840" width="180" height="50"/>
+                    <text x="450" y="865" text-anchor="middle" font-size="12">Node 2: Share₂</text>
+
+                    <rect class="mpc-box" x="570" y="840" width="180" height="50"/>
+                    <text x="660" y="865" text-anchor="middle" font-size="12">Node 3: Share₃</text>
+                </g>
+
+                <line class="arrow" x1="450" y1="905" x2="450" y2="955" stroke="#12eb93" stroke-width="3"/>
+
+                <!-- Output: ARX Token -->
+                <rect x="250" y="955" width="400" height="75" fill="rgba(18, 235, 147, 0.2)" stroke="#12eb93" stroke-width="3" rx="10"/>
+                <text x="450" y="985" text-anchor="middle" font-size="17" font-weight="700" fill="#12eb93">OUTPUT: ARX Token</text>
+                <text x="450" y="1010" text-anchor="middle" font-size="15">"ARX-73f2a9e4c5b6d8f1"</text>
+            </svg>
+
+            <div class="warning-box">
+                <div class="warning-title">⚠️ Critical Security Boundary</div>
+                <div style="margin-top: 10px;">Once PII enters the <span class="highlight-text">Encryption Layer</span>, it is transformed into encrypted shares. From this point forward, no single entity—not the backend, not individual MPC nodes, not even the Solana blockchain—ever sees the original plaintext "Albert Einstein" again. The computation happens entirely on encrypted data.</div>
+            </div>
+
+            <div class="note-box">
+                <div class="note-title">📊 Data State at Each Stage</div>
+                <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                    <li><strong>Stage 1-3:</strong> PII exists in plaintext (temporary, in-memory only)</li>
+                    <li><strong>Encryption Layer:</strong> PII split into cryptographic shares</li>
+                    <li><strong>MPC Zone:</strong> Only encrypted shares exist, never combined</li>
+                    <li><strong>Output:</strong> Deterministic, irreversible anonymized token</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- MPC DEEP DIVE DIAGRAM -->
+        <div id="mpc-detail" class="diagram-container">
+            <h2 class="diagram-title">MPC Deep Dive</h2>
+            <p class="diagram-subtitle">How Multi-Party Computation protects privacy</p>
+            
+            <svg viewBox="0 0 1000 900" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#62afff" />
+                    </marker>
+                </defs>
+
+                <!-- Input -->
+                <rect x="400" y="40" width="200" height="60" fill="rgba(244, 67, 54, 0.2)" stroke="#f44336" stroke-width="2" rx="8"/>
+                <text x="500" y="65" text-anchor="middle" font-size="16" font-weight="700">Secret Input</text>
+                <text x="500" y="88" text-anchor="middle" font-size="14">"Albert Einstein"</text>
+
+                <line class="arrow" x1="500" y1="100" x2="500" y2="150"/>
+
+                <!-- Secret Sharing -->
+                <rect x="350" y="150" width="300" height="80" fill="rgba(103, 58, 183, 0.15)" stroke="#673AB7" stroke-width="2" rx="8"/>
+                <text x="500" y="180" text-anchor="middle" font-size="16" font-weight="700">Secret Sharing Algorithm</text>
+                <text x="500" y="205" text-anchor="middle" font-size="13">Shamir's Secret Sharing (Threshold: 2/3)</text>
+
+                <!-- Distribution -->
+                <g>
+                    <line class="arrow" x1="400" y1="230" x2="200" y2="300"/>
+                    <line class="arrow" x1="500" y1="230" x2="500" y2="300"/>
+                    <line class="arrow" x1="600" y1="230" x2="800" y2="300"/>
+                </g>
+
+                <!-- Three Nodes -->
+                <g>
+                    <!-- Node 1 -->
+                    <rect class="mpc-box" x="100" y="300" width="200" height="120"/>
+                    <text x="200" y="330" text-anchor="middle" font-size="15" font-weight="700">🖥️ Node 1</text>
+                    <text x="200" y="355" text-anchor="middle" font-size="13">Location: US-East</text>
+                    <text x="200" y="380" text-anchor="middle" font-size="12" fill="#ff9800">Share₁: 0x7a3f...</text>
+                    <text x="200" y="400" text-anchor="middle" font-size="11">❌ Cannot decode alone</text>
+
+                    <!-- Node 2 -->
+                    <rect class="mpc-box" x="400" y="300" width="200" height="120"/>
+                    <text x="500" y="330" text-anchor="middle" font-size="15" font-weight="700">🖥️ Node 2</text>
+                    <text x="500" y="355" text-anchor="middle" font-size="13">Location: EU-West</text>
+                    <text x="500" y="380" text-anchor="middle" font-size="12" fill="#ff9800">Share₂: 0x9c2e...</text>
+                    <text x="500" y="400" text-anchor="middle" font-size="11">❌ Cannot decode alone</text>
+
+                    <!-- Node 3 -->
+                    <rect class="mpc-box" x="700" y="300" width="200" height="120"/>
+                    <text x="800" y="330" text-anchor="middle" font-size="15" font-weight="700">🖥️ Node 3</text>
+                    <text x="800" y="355" text-anchor="middle" font-size="13">Location: Asia-Pacific</text>
+                    <text x="800" y="380" text-anchor="middle" font-size="12" fill="#ff9800">Share₃: 0x4b8d...</text>
+                    <text x="800" y="400" text-anchor="middle" font-size="11">❌ Cannot decode alone</text>
+                </g>
+
+                <!-- Secure Computation Zone -->
+                <rect class="secure-zone" x="50" y="450" width="900" height="180"/>
+                <text x="500" y="480" text-anchor="middle" fill="#12eb93" font-size="16" font-weight="700">⚡ SECURE COMPUTATION PROTOCOL</text>
+
+                <g>
+                    <text x="200" y="520" text-anchor="middle" font-size="13">1. Local Compute</text>
+                    <text x="200" y="540" text-anchor="middle" font-size="11">Hash(Share₁)</text>
+                    <text x="200" y="560" text-anchor="middle" font-size="11">→ Fragment₁</text>
+
+                    <text x="500" y="520" text-anchor="middle" font-size="13">2. Local Compute</text>
+                    <text x="500" y="540" text-anchor="middle" font-size="11">Hash(Share₂)</text>
+                    <text x="500" y="560" text-anchor="middle" font-size="11">→ Fragment₂</text>
+
+                    <text x="800" y="520" text-anchor="middle" font-size="13">3. Local Compute</text>
+                    <text x="800" y="540" text-anchor="middle" font-size="11">Hash(Share₃)</text>
+                    <text x="800" y="560" text-anchor="middle" font-size="11">→ Fragment₃</text>
+
+                    <text x="500" y="600" text-anchor="middle" font-size="14" font-weight="700" fill="#12eb93">Combine Fragments (MPC Protocol)</text>
+                </g>
+
+                <!-- Combining -->
+                <g>
+                    <line class="data-flow" x1="200" y1="630" x2="450" y2="680"/>
+                    <line class="data-flow" x1="500" y1="630" x2="500" y2="680"/>
+                    <line class="data-flow" x1="800" y1="630" x2="550" y2="680"/>
+                </g>
+
+                <!-- Result -->
+                <rect x="350" y="680" width="300" height="80" fill="rgba(18, 235, 147, 0.2)" stroke="#12eb93" stroke-width="3" rx="8"/>
+                <text x="500" y="710" text-anchor="middle" font-size="16" font-weight="700" fill="#12eb93">Final ARX Token</text>
+                <text x="500" y="735" text-anchor="middle" font-size="14">"ARX-73f2a9e4c5b6d8f1"</text>
+
+                <!-- Return -->
+                <line class="arrow" x1="500" y1="760" x2="500" y2="810" stroke="#12eb93" stroke-width="3"/>
+
+                <!-- Backend -->
+                <rect class="component-box" x="350" y="810" width="300" height="70"/>
+                <text x="500" y="840" text-anchor="middle" font-size="15" font-weight="700">Backend Receives</text>
+                <text x="500" y="865" text-anchor="middle" font-size="13">Only ARX Token (No Plaintext)</text>
+            </svg>
+
+            <div class="note-box">
+                <div class="note-title">🔐 Security Guarantees</div>
+                <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                    <li><strong>No Single Point of Failure:</strong> Even if 1 node is compromised, the secret remains safe</li>
+                    <li><strong>Threshold Security:</strong> Need at least 2/3 nodes to reconstruct the original</li>
+                    <li><strong>Verifiable Computation:</strong> Solana blockchain ensures nodes execute correctly</li>
+                    <li><strong>Information-Theoretic Security:</strong> Shares reveal zero information about the original</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                <div class="warning-title">🎯 Why This Matters</div>
+                <div style="margin-top: 10px;">Traditional systems require you to <strong>trust</strong> a single party with your sensitive data. With Arcium's MPC, trust is <strong>distributed</strong> across multiple independent nodes. Even if some nodes are malicious or compromised, your data remains protected. This is the fundamental paradigm shift that makes privacy-preserving computation practical.</div>
+            </div>
+
+            <div class="legend">
+                <div class="legend-title">MPC Process Flow</div>
+                <div class="legend-items">
+                    <div class="legend-item">
+                        <div style="width: 40px; height: 40px; background: rgba(244, 67, 54, 0.2); border: 2px solid #f44336; border-radius: 8px;"></div>
+                        <span>Plaintext Data (Input Only)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div style="width: 40px; height: 40px; background: rgba(255, 152, 0, 0.15); border: 2px solid #ff9800; border-radius: 8px;"></div>
+                        <span>Encrypted Shares (Distributed)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div style="width: 40px; height: 40px; background: rgba(18, 235, 147, 0.2); border: 2px solid #12eb93; border-radius: 8px;"></div>
+                        <span>Anonymized Output (Public)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div style="width: 40px; height: 40px; background: rgba(18, 235, 147, 0.08); border: 2px dashed #12eb93; border-radius: 8px;"></div>
+                        <span>Secure Computation Zone</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showDiagram(diagramId) {
+            // Hide all diagrams
+            document.querySelectorAll('.diagram-container').forEach(container => {
+                container.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected diagram
+            document.getElementById(diagramId).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
