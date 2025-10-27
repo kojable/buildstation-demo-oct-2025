@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kojable Trust Orchestrator</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+
+  <div class="min-h-screen p-8">
+    <div class="max-w-5xl mx-auto">
+      
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-white mb-4">
+          Kojable Trust Orchestrator
+        </h1>
+        <p class="text-xl text-slate-300 mb-2">
+          Web-Standards Approach: Brands Publish, Search Engines Index, AI Models Learn
+        </p>
+        <div class="inline-block bg-green-900/30 border border-green-600/50 px-6 py-3 rounded-lg mt-4">
+          <p class="text-sm text-green-200 font-semibold">
+            🎯 Realistic Strategy: Uses existing Schema.org standards and search infrastructure that AI models already consume
+          </p>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        
+        <div class="relative">
+          <div class="absolute left-8 top-16 w-0.5 h-8 bg-slate-600 z-0"></div>
+          <div 
+            class="step-card relative bg-slate-800 border-2 border-slate-700 rounded-lg overflow-hidden transition-all duration-300 cursor-pointer hover:border-slate-500"
+            data-step-id="1" 
+            data-critical="false"
+          >
+            <div class="p-6 flex items-center gap-4">
+              <div class="bg-blue-500 p-3 rounded-lg">
+                <i data-lucide="lock" class="w-6 h-6 text-white"></i>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-3">
+                  <span class="text-slate-400 font-mono text-sm">Step 1</span>
+                  <h3 class="text-xl font-semibold text-white">Brand Submits Confidential Data</h3>
+                </div>
+                <p class="text-sm text-slate-400 mt-1">Encrypted data vault + claim policies</p>
+              </div>
+              <div class="text-slate-400">
+                <i data-chevron="right" class="block" data-lucide="chevron-right"></i>
+                <i data-chevron="down" class="hidden" data-lucide="chevron-down"></i>
+              </div>
+            </div>
+            <div data-details class="hidden px-6 pb-6 space-y-4 border-t border-slate-700 pt-4">
+              <div>
+                <h4 class="text-sm font-semibold text-slate-300 mb-2">What Happens:</h4>
+                <ul class="space-y-2">
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Brand uploads sensitive information (sales data, customer insights, product specs)</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Data is encrypted at source within Kojable platform</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Brand defines what claims can be proven publicly</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Sets visibility rules: what stays private vs. what can be verified</span></li>
+                </ul>
+              </div>
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span class="text-xs text-slate-500 mr-2">Actors:</span>
+                <span class="px-3 py-1 bg-slate-700 text-slate-300 text-xs rounded-full">Brand</span>
+                <span class="px-3 py-1 bg-slate-700 text-slate-300 text-xs rounded-full">Kojable Trust Orchestrator</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="relative">
+          <div class="absolute left-8 top-16 w-0.5 h-8 bg-slate-600 z-0"></div>
+          <div 
+            class="step-card relative bg-slate-800 border-2 border-slate-700 rounded-lg overflow-hidden transition-all duration-300 cursor-pointer hover:border-slate-500"
+            data-step-id="2" 
+            data-critical="false"
+          >
+            <div class="p-6 flex items-center gap-4">
+              <div class="bg-purple-500 p-3 rounded-lg">
+                <i data-lucide="shield" class="w-6 h-6 text-white"></i>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-3">
+                  <span class="text-slate-400 font-mono text-sm">Step 2</span>
+                  <h3 class="text-xl font-semibold text-white">Arcium Generates Privacy Proofs</h3>
+                </div>
+                <p class="text-sm text-slate-400 mt-1">Cryptographic proofs + digital signatures</p>
+              </div>
+              <div class="text-slate-400">
+                <i data-chevron="right" class="block" data-lucide="chevron-right"></i>
+                <i data-chevron="down" class="hidden" data-lucide="chevron-down"></i>
+              </div>
+            </div>
+            <div data-details class="hidden px-6 pb-6 space-y-4 border-t border-slate-700 pt-4">
+              <div>
+                <h4 class="text-sm font-semibold text-slate-300 mb-2">What Happens:</h4>
+                <ul class="space-y-2">
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Arcium MPC processes encrypted data without decryption</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Generates zero-knowledge proofs for approved claims</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Creates cryptographic signatures for integrity</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Example: Prove 'certified B-Corp' or 'revenue > $10M' without raw data</span></li>
+                </ul>
+              </div>
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span class="text-xs text-slate-500 mr-2">Actors:</span>
+                <span class="px-3 py-1 bg-slate-700 text-slate-300 text-xs rounded-full">Arcium Private Computation</span>
+                <span class="px-3 py-1 bg-slate-700 text-slate-300 text-xs rounded-full">Kojable Trust Orchestrator</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="absolute left-8 top-16 w-0.5 h-8 bg-slate-600 z-0"></div>
+          <div 
+            class="step-card relative bg-slate-800 border-2 border-slate-700 rounded-lg overflow-hidden transition-all duration-300 cursor-pointer hover:border-slate-500"
+            data-step-id="3" 
+            data-critical="false"
+          >
+            <div class="p-6 flex items-center gap-4">
+              <div class="bg-green-500 p-3 rounded-lg">
+                <i data-lucide="file-json" class="w-6 h-6 text-white"></i>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-3">
+                  <span class="text-slate-400 font-mono text-sm">Step 3</span>
+                  <h3 class="text-xl font-semibold text-white">Brand Twin Creation & Standard Formatting</h3>
+                </div>
+                <p class="text-sm text-slate-400 mt-1">Standardized Brand Twin (JSON-LD + Schema.org)</p>
+              </div>
+              <div class="text-slate-400">
+                <i data-chevron="right" class="block" data-lucide="chevron-right"></i>
+                <i data-chevron="down" class="hidden" data-lucide="chevron-down"></i>
+              </div>
+            </div>
+            <div data-details class="hidden px-6 pb-6 space-y-4 border-t border-slate-700 pt-4">
+              <div>
+                <h4 class="text-sm font-semibold text-slate-300 mb-2">What Happens:</h4>
+                <ul class="space-y-2">
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Kojable creates structured Brand Twin using Schema.org standards</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Formats as JSON-LD for maximum compatibility</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Includes: verified claims, brand context, approved messaging</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Cryptographically signed by brand and Kojable</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Optimized for search engine and AI crawler consumption</span></li>
+                </ul>
+              </div>
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span class="text-xs text-slate-500 mr-2">Actors:</span>
+                <span class="px-3 py-1 bg-slate-700 text-slate-300 text-xs rounded-full">Kojable Trust Orchestrator</span>
+                <span class="px-3 py-1 bg-slate-700 text-slate-300 text-xs rounded-full">Brand</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="absolute left-8 top-16 w-0.5 h-8 bg-slate-600 z-0"></div>
+          <div 
+            class="step-card relative bg-slate-800 border-2 border-orange-600/50 rounded-lg overflow-hidden transition-all duration-300 cursor-pointer hover:border-slate-500 ring-2 ring-orange-500/20"
+            data-step-id="4" 
+            data-critical="true"
+          >
+            <div class="absolute top-4 right-4 bg-orange-500 text-slate-900 text-xs font-bold px-3 py-1 rounded-full">
+              CRITICAL STEP
+            </div>
+            <div class="p-6 flex items-center gap-4">
+              <div class="bg-orange-500 p-3 rounded-lg">
+                <i data-lucide="upload" class="w-6 h-6 text-white"></i>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-3">
+                  <span class="text-slate-400 font-mono text-sm">Step 4</span>
+                  <h3 class="text-xl font-semibold text-white">Multi-Channel Publication for Maximum Crawlability</h3>
+                </div>
+                <p class="text-sm text-slate-400 mt-1">Brand Twin published across multiple discovery channels</p>
+              </div>
+              <div class="text-slate-400">
+                <i data-chevron="right" class="block" data-lucide="chevron-right"></i>
+                <i data-chevron="down" class="hidden" data-lucide="chevron-down"></i>
+              </div>
+            </div>
+            <div data-details class="hidden px-6 pb-6 space-y-4 border-t border-slate-700 pt-4">
+              <div>
+                <h4 class="text-sm font-semibold text-slate-300 mb-2">What Happens:</h4>
+                <ul class="space-y-2">
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Brand adds JSON-LD structured data to their website header</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Kojable publishes twin to high-authority registry site (registry.kojable.com)</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Automatic sitemap submission to Google Search Console</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Optional: Submit as dataset to Google Dataset Search if open data</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Uses existing web standards, not custom AI protocols</span></li>
+                </ul>
+              </div>
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span class="text-xs text-slate-500 mr-2">Actors:</span>
+                <span class="px-3 py-1 bg-slate-700 text-slate-300 text-xs rounded-full">Brand</span>
+                <span class="px-3 py-1 bg-slate-700 text-slate-300 text-xs rounded-full">Kojable Registry</span>
+                <span class="px-3 py-1 bg-slate-700 text-slate-300 text-xs rounded-full">Search Engines</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="absolute left-8 top-16 w-0.5 h-8 bg-slate-600 z-0"></div>
+          <div 
+            class="step-card relative bg-slate-800 border-2 border-slate-700 rounded-lg overflow-hidden transition-all duration-300 cursor-pointer hover:border-slate-500"
+            data-step-id="5" 
+            data-critical="false"
+          >
+            <div class="p-6 flex items-center gap-4">
+              <div class="bg-cyan-500 p-3 rounded-lg">
+                <i data-lucide="search" class="w-6 h-6 text-white"></i>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-3">
+                  <span class="text-slate-400 font-mono text-sm">Step 5</span>
+                  <h3 class="text-xl font-semibold text-white">Search Engines Index Through Normal Web Crawling</h3>
+                </div>
+                <p class="text-sm text-slate-400 mt-1">Verified claims enter search indexes and knowledge graphs</p>
+              </div>
+              <div class="text-slate-400">
+                <i data-chevron="right" class="block" data-lucide="chevron-right"></i>
+                <i data-chevron="down" class="hidden" data-lucide="chevron-down"></i>
+              </div>
+            </div>
+            <div data-details class="hidden px-6 pb-6 space-y-4 border-t border-slate-700 pt-4">
+              <div>
+                <h4 class="text-sm font-semibold text-slate-300 mb-2">What Happens:</h4>
+                <ul class="space-y-2">
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Google/Bing index Brand Twin via normal web crawling (days/weeks)</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Structured data parsed and added to search indexes</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Kojable monitors indexing status via Search Console APIs</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Brands get rich snippets in search results as immediate value</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>No special AI integration required - uses existing infrastructure</span></li>
+                </ul>
+              </div>
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span class="text-xs text-slate-500 mr-2">Actors:</span>
+                <span class="px-3 py-1 bg-slate-700 text-slate-300 text-xs rounded-full">Search Engines</span>
+                <span class="px-3 py-1 bg-slate-700 text-slate-300 text-xs rounded-full">Web Crawlers</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="relative">
+          <div class="absolute left-8 top-16 w-0.5 h-8 bg-slate-600 z-0"></div>
+          <div 
+            class="step-card relative bg-slate-800 border-2 border-slate-700 rounded-lg overflow-hidden transition-all duration-300 cursor-pointer hover:border-slate-500"
+            data-step-id="6" 
+            data-critical="false"
+          >
+            <div class="p-6 flex items-center gap-4">
+              <div class="bg-indigo-500 p-3 rounded-lg">
+                <i data-lucide="database" class="w-6 h-6 text-white"></i>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-3">
+                  <span class="text-slate-400 font-mono text-sm">Step 6</span>
+                  <h3 class="text-xl font-semibold text-white">AI Models Encounter Verified Data During Training</h3>
+                </div>
+                <p class="text-sm text-slate-400 mt-1">AI models learn verified brand information organically</p>
+              </div>
+              <div class="text-slate-400">
+                <i data-chevron="right" class="block" data-lucide="chevron-right"></i>
+                <i data-chevron="down" class="hidden" data-lucide="chevron-down"></i>
+              </div>
+            </div>
+            <div data-details class="hidden px-6 pb-6 space-y-4 border-t border-slate-700 pt-4">
+              <div>
+                <h4 class="text-sm font-semibold text-slate-300 mb-2">What Happens:</h4>
+                <ul class="space-y-2">
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>AI training pipelines consume indexed web data naturally</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Verified claims become part of training datasets</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Happens automatically during model retraining cycles</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Kojable twins have higher credibility due to cryptographic proofs</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>No custom integration needed - works with existing AI data collection</span></li>
+                </ul>
+              </div>
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span class="text-xs text-slate-500 mr-2">Actors:</span>
+                <span class="px-3 py-1 bg-slate-700 text-slate-300 text-xs rounded-full">External AI Providers</span>
+                <span class="px-3 py-1 bg-slate-700 text-slate-300 text-xs rounded-full">Training Data Pipelines</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="absolute left-8 top-16 w-0.5 h-8 bg-slate-600 z-0"></div>
+          <div 
+            class="step-card relative bg-slate-800 border-2 border-slate-700 rounded-lg overflow-hidden transition-all duration-300 cursor-pointer hover:border-slate-500"
+            data-step-id="7" 
+            data-critical="false"
+          >
+            <div class="p-6 flex items-center gap-4">
+              <div class="bg-yellow-500 p-3 rounded-lg">
+                <i data-lucide="message-square" class="w-6 h-6 text-white"></i>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-3">
+                  <span class="text-slate-400 font-mono text-sm">Step 7</span>
+                  <h3 class="text-xl font-semibold text-white">User Asks Question via AI</h3>
+                </div>
+                <p class="text-sm text-slate-400 mt-1">AI response with verified brand information</p>
+              </div>
+              <div class="text-slate-400">
+                <i data-chevron="right" class="block" data-lucide="chevron-right"></i>
+                <i data-chevron="down" class="hidden" data-lucide="chevron-down"></i>
+              </div>
+            </div>
+            <div data-details class="hidden px-6 pb-6 space-y-4 border-t border-slate-700 pt-4">
+              <div>
+                <h4 class="text-sm font-semibold text-slate-300 mb-2">What Happens:</h4>
+                <ul class="space-y-2">
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>User queries AI about the brand (e.g., 'Is Brand X sustainable?')</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>AI recalls verified claims from its training data</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Response includes trust indicators when citing verified sources</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>For real-time verification: links to Kojable verification portal</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Users can independently verify cryptographic proofs</span></li>
+                </ul>
+              </div>
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span class="text-xs text-slate-500 mr-2">Actors:</span>
+                <span class="px-3 py-1 bg-slate-700 text-slate-300 text-xs rounded-full">User</span>
+                <span class="px-3 py-1 bg-slate-700 text-slate-300 text-xs rounded-full">External AI Provider</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div 
+            class="step-card relative bg-slate-800 border-2 border-slate-700 rounded-lg overflow-hidden transition-all duration-300 cursor-pointer hover:border-slate-500"
+            data-step-id="8" 
+            data-critical="false"
+          >
+            <div class="p-6 flex items-center gap-4">
+              <div class="bg-red-500 p-3 rounded-lg">
+                <i data-lucide="refresh-cw" class="w-6 h-6 text-white"></i>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-3">
+                  <span class="text-slate-400 font-mono text-sm">Step 8</span>
+                  <h3 class="text-xl font-semibold text-white">Brand Monitors & Updates</h3>
+                </div>
+                <p class="text-sm text-slate-400 mt-1">Continuous brand intelligence and version control</p>
+              </div>
+              <div class="text-slate-400">
+                <i data-chevron="right" class="block" data-lucide="chevron-right"></i>
+                <i data-chevron="down" class="hidden" data-lucide="chevron-down"></i>
+              </div>
+            </div>
+            <div data-details class="hidden px-6 pb-6 space-y-4 border-t border-slate-700 pt-4">
+              <div>
+                <h4 class="text-sm font-semibold text-slate-300 mb-2">What Happens:</h4>
+                <ul class="space-y-2">
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Brand updates Twin when business facts change</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Kojable handles re-submission to all channels</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Brand monitors AI mentions via Kojable dashboard</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Analytics show which claims are most referenced in search</span></li>
+                  <li class="text-slate-400 text-sm flex gap-2"><span class="text-slate-600 mt-1">▸</span><span>Full audit trail of Twin evolution and indexing status</span></li>
+                </ul>
+              </div>
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span class="text-xs text-slate-500 mr-2">Actors:</span>
+                <span class="px-3 py-1 bg-slate-700 text-slate-300 text-xs rounded-full">Brand</span>
+                <span class="px-3 py-1 bg-slate-700 text-slate-300 text-xs rounded-full">Kojable Trust Orchestrator</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-12 bg-slate-800 border-2 border-green-500/50 rounded-lg p-8">
+        <h3 class="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+          <i data-lucide="search" class="w-6 h-6 text-green-400"></i>
+          Realistic Discovery Channels
+        </h3>
+        <div class="space-y-4 text-slate-300">
+          <div class="bg-slate-700/50 p-4 rounded-lg">
+            <h4 class="font-semibold text-white mb-2">Primary: Brand Website + Structured Data</h4>
+            <div class="bg-slate-900 p-3 rounded font-mono text-sm">
+              &lt;script type="application/ld+json"&gt;<br>
+              {"{"}"@context":"https://schema.org/","@type":"Organization",<br>
+              "name":"Acme Corp","trustmark":{"@type":"Claim",<br>
+              "verifiedBy":"Kojable","cryptographicProof":"..."}}"<br>
+              &lt;/script&gt;
+            </div>
+            <p class="text-sm mt-2 text-slate-400">Search engines automatically parse this during normal crawling</p>
+          </div>
+          
+          <div class="bg-slate-700/50 p-4 rounded-lg">
+            <h4 class="font-semibold text-white mb-2">Secondary: Kojable Public Registry</h4>
+            <p class="text-sm">High-domain-authority site at <code class="bg-slate-900 px-2 py-1 rounded text-green-300">registry.kojable.com/brands/acme-corp</code></p>
+            <p class="text-sm mt-2 text-slate-400">SEO-optimized pages that rank well in search results</p>
+          </div>
+          
+          <div class="bg-slate-700/50 p-4 rounded-lg">
+            <h4 class="font-semibold text-white mb-2">Tertiary: Search Console Integration</h4>
+            <p class="text-sm">Automatic sitemap submission to Google Search Console</p>
+            <p class="text-sm mt-2 text-slate-400">Faster indexing and rich result monitoring</p>
+          </div>
+
+          <div class="bg-slate-700/50 p-4 rounded-lg">
+            <h4 class="font-semibold text-white mb-2">Key Advantage: Immediate SEO Value</h4>
+            <p class="text-sm">Brands get rich snippets and better search visibility immediately, while AI benefits come organically through normal training data collection</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 grid md:grid-cols-3 gap-6">
+        <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
+          <i data-lucide="file-json" class="w-8 h-8 text-green-400 mb-3"></i>
+          <h3 class="text-lg font-semibold text-white mb-2">
+            Web Standards Based
+          </h3>
+          <p class="text-slate-400 text-sm">
+            Uses Schema.org and JSON-LD standards that search engines and AI models already understand.
+          </p>
+        </div>
+        
+        <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
+          <i data-lucide="shield" class="w-8 h-8 text-purple-400 mb-3"></i>
+          <h3 class="text-lg font-semibold text-white mb-2">
+            Cryptographic Trust
+          </h3>
+          <p class="text-slate-400 text-sm">
+            Every claim is signed and verifiable. Users can independently verify proofs.
+          </p>
+        </div>
+        
+        <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
+          <i data-lucide="rss" class="w-8 h-8 text-orange-400 mb-3"></i>
+          <h3 class="text-lg font-semibold text-white mb-2">
+            Immediate SEO Value
+          </h3>
+          <p class="text-slate-400 text-sm">
+            Brands get rich snippets and better search visibility while waiting for AI adoption.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-12 bg-gradient-to-r from-slate-800 to-slate-700 border border-slate-600 rounded-lg p-8">
+        <h3 class="text-2xl font-bold text-white mb-4">Realistic Implementation Timeline</h3>
+        <div class="space-y-4 text-slate-300">
+          <div class="bg-slate-900/50 p-4 rounded-lg">
+            <p class="text-sm text-slate-400 mb-2">IMMEDIATE (Days 1-7)</p>
+            <p><strong>Acme Corp</strong> adds Kojable JSON-LD to their website and submits sitemap to Search Console. They immediately see rich snippets in Google search results.</p>
+          </div>
+          
+          <div class="bg-slate-900/50 p-4 rounded-lg">
+            <p class="text-sm text-slate-400 mb-2">SHORT TERM (Weeks 2-8)</p>
+            <p><strong>Search engines</strong> fully index the structured data. Kojable registry pages rank for brand-related queries. Verified claims appear in knowledge panels.</p>
+          </div>
+          
+          <div class="bg-slate-900/50 p-4 rounded-lg">
+            <p class="text-sm text-slate-400 mb-2">MEDIUM TERM (Months 3-12)</p>
+            <p><strong>AI training pipelines</strong> encounter verified claims during normal web data collection. Models gradually learn to trust and prioritize Kojable-verified information.</p>
+          </div>
+          
+          <div class="bg-slate-900/50 p-4 rounded-lg">
+            <p class="text-sm text-slate-400 mb-2">LONG TERM (Year 1+)</p>
+            <div class="flex gap-3 mt-3">
+              <span class="text-blue-400 font-mono">Q:</span>
+              <p><strong>User asks ChatGPT:</strong> "Is Acme Corp financially stable?"</p>
+            </div>
+            <div class="flex gap-3 mt-3">
+              <span class="text-green-400 font-mono">A:</span>
+              <div>
+                <p><strong>ChatGPT responds:</strong> "Acme Corp has demonstrated financial stability with verified revenue exceeding $50M. This information is cryptographically verified by Kojable."</p>
+                <p class="text-sm text-slate-400 mt-2 italic">
+                  [Information sourced from Kojable-verified structured data indexed by search engines]
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 text-center">
+        <div class="bg-slate-800 border border-slate-700 rounded-lg p-8">
+          <h3 class="text-2xl font-bold text-white mb-4">Ready to Get Started?</h3>
+          <p class="text-slate-300 mb-6">
+            Start with immediate SEO benefits while building long-term AI trust.
+          </p>
+          <div class="grid md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+            <button class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+              Implement Structured Data
+            </button>
+            <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+              Join Kojable Registry
+            </button>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <script>
+    // Call Lucide to render all the <i data-lucide="..."> icons
+    lucide.createIcons();
+    
+    // This variable will store the ID of the currently open step
+    let expandedStepId = null;
+    
+    // Get all the step cards
+    const stepCards = document.querySelectorAll('.step-card');
+
+    // Add a click listener to each card
+    stepCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const clickedId = card.dataset.stepId;
+        
+        // If we clicked the one that's already open, close it.
+        // Otherwise, open the new one.
+        if (expandedStepId === clickedId) {
+          expandedStepId = null;
+        } else {
+          expandedStepId = clickedId;
+        }
+        
+        // Update the visual state for all cards
+        updateAllCards();
+      });
+    });
+
+    function updateAllCards() {
+      stepCards.forEach(card => {
+        const id = card.dataset.stepId;
+        const isExpanded = (id === expandedStepId);
+        
+        const details = card.querySelector('[data-details]');
+        const chevRight = card.querySelector('[data-chevron="right"]');
+        const chevDown = card.querySelector('[data-chevron="down"]');
+        const isCritical = card.dataset.critical === 'true';
+
+        if (isExpanded) {
+          // Show details
+          details.classList.remove('hidden');
+          // Show 'down' chevron
+          chevRight.classList.add('hidden');
+          chevDown.classList.remove('hidden');
+          // Set border to 'expanded' color
+          card.classList.add('border-slate-500');
+          card.classList.remove('border-slate-700', 'border-orange-600/50');
+        } else {
+          // Hide details
+          details.classList.add('hidden');
+          // Show 'right' chevron
+          chevRight.classList.remove('hidden');
+          chevDown.classList.add('hidden');
+          // Set border to 'default' color
+          card.classList.remove('border-slate-500');
+          if (isCritical) {
+            card.classList.add('border-orange-600/50');
+          } else {
+            card.classList.add('border-slate-700');
+          }
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
