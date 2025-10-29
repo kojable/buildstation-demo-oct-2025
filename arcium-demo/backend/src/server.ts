@@ -11,10 +11,12 @@ import {
   getMXEPublicKey,
   getComputationAccAddress,
   deserializeLE,
+  awaitComputationFinalization,
 } from '@arcium-hq/client';
 import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
+import bs58 from 'bs58';
 
 // Load environment variables
 dotenv.config();
@@ -288,7 +290,7 @@ async function anonymizeWithArcium(piiValue: string, piiType: string): Promise<A
     
     // Validate MXE public key
     if (!mxePublicKey) {
-      throw new Error('MXE not initialized. Run: cd arcium-demo/anonymization_mxe && anchor test');
+      throw new Error('Failed to get MXE public key');
     }
     
     // Generate ephemeral keypair for this encryption
@@ -317,6 +319,7 @@ async function anonymizeWithArcium(piiValue: string, piiType: string): Promise<A
       computationOffset
     );
     
+    console.log(`    Computation Account: ${computationAccount.toString()}`);
     console.log(`    Submitting encrypted computation to Arcium network...`);
     
     // Submit computation to Arcium
@@ -351,7 +354,7 @@ async function anonymizeWithArcium(piiValue: string, piiType: string): Promise<A
     const solCost = (balanceBefore - balanceAfter) / LAMPORTS_PER_SOL;
     
     console.log(`    ✓ Anonymized: "${piiValue}" → "${token}"`);
-    console.log(`    💰 Cost: ${solCost.toFixed(9)} SOL`);
+    console.log(`    💰 Cost: ${solCost.toFixed(6)} SOL`);
     
     return {
       original_value: piiValue,
@@ -368,7 +371,7 @@ async function anonymizeWithArcium(piiValue: string, piiType: string): Promise<A
     
     // Fallback to simulated anonymization if Arcium fails
     console.log(`    ℹ Falling back to simulated anonymization...`);
-    await new Promise(resolve => setTimeout(resolve, 100));
+    await new Promise(resolve => setTimeout(resolve, 500));
     
     const hash = crypto.createHash('sha256').update(piiValue).digest('hex');
     const token = `ARX-${hash.substring(0, 16)}`;
