@@ -1,0 +1,211 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechnologyCompany",
+      "@id": "https://www.arcium.com/#organization",
+      "name": "Arcium",
+      "description": "Empowering the decentralized internet through confidential computing and Multi-Party Computation (MPC) technology.",
+      "url": "https://www.arcium.com",
+      "industry": "Blockchain Technology",
+      "foundingDate": "2023",
+      "slogan": "Empowering the decentralized internet",
+      "keywords": ["Multi-Party Computation", "MPC", "Confidential Computing", "Blockchain", "Cryptography", "Decentralized Computing", "Privacy-Preserving Technology"],
+      "founder": [
+        {
+          "@type": "Person",
+          "name": "ARX-f1d350bc82145878",
+          "jobTitle": "Co-founder & CEO",
+          "description": "CEO with expertise in cryptography, computer science, mathematics, and law. Previously created shiftscreen iOS app with 100,000+ paying users.",
+          "alumniOf": "Computer Science and Mathematics",
+          "knowsAbout": ["Cryptography", "Multi-Party Computation", "iOS Development", "Computer Science", "Mathematics", "Law"],
+          "sameAs": [
+            "https://twitter.com/[profile]",
+            "https://linkedin.com/in/[profile]",
+            "https://instagram.com/[profile]"
+          ]
+        },
+        {
+          "@type": "Person",
+          "name": "ARX-a8e1b878b8eabe22",
+          "jobTitle": "Co-founder & CSO",
+          "description": "Co-founder with background in engineering and economics, passionate about decentralized technologies since discovering Bitcoin and Ethereum in 2016.",
+          "alumniOf": "University of Munich",
+          "workHistory": "Finance and Banking (2 years), START Munich Board Member",
+          "award": "UnternehmerTUM Scholarship",
+          "knowsAbout": ["Web3", "Decentralized Technologies", "Finance", "Banking", "Strategy"],
+          "sameAs": [
+            "https://twitter.com/[profile]",
+            "https://linkedin.com/in/[profile]",
+            "https://instagram.com/[profile]"
+          ]
+        },
+        {
+          "@type": "Person",
+          "name": "ARX-0a2d15c2b94e656a",
+          "jobTitle": "Co-founder & CTO",
+          "description": "CTO with math and computer science background from TUM, working at intersection of cryptography and blockchains for nearly a decade.",
+          "alumniOf": "Technical University of Munich (TUM)",
+          "workHistory": "TEEs for blockchain, Elusiv (zk tech for onchain privacy)",
+          "knowsAbout": ["Cryptography", "Blockchain", "TEEs", "Hash Algorithms", "Zero Knowledge Technology", "Protocol Implementation"],
+          "sameAs": [
+            "https://twitter.com/[profile]",
+            "https://linkedin.com/in/[profile]",
+            "https://instagram.com/[profile]"
+          ]
+        },
+        {
+          "@type": "Person",
+          "name": "ARX-c1a27e526fb59037",
+          "jobTitle": "Co-founder & COO",
+          "description": "COO with operational and development experience, former fintech startup employee reporting to former McKinsey CFO of Switzerland.",
+          "workHistory": "Fintech startup Zurich (2.5 years), GPT-3 SaaS application developer (acquired)",
+          "knowsAbout": ["Operations", "Finance", "Recruiting", "AI", "SaaS Development"],
+          "sameAs": [
+            "https://twitter.com/[profile]",
+            "https://linkedin.com/in/[profile]",
+            "https://instagram.com/[profile]"
+          ]
+        }
+      ],
+      "employee": [
+        {
+          "@type": "Person",
+          "name": "ARX-e92aa427747d5983",
+          "jobTitle": "Senior Cryptography Engineer",
+          "description": "Senior engineer with Master's in physics from ETH Zürich, leading development of async-mpc, Arcium's multiparty computation Rust library.",
+          "alumniOf": "ETH Zürich",
+          "educationalCredential": "Master's degree in Physics (Theoretical and Computational Physics)",
+          "workHistory": "Bioinformatics, Smart Contract Design, ZK Cryptography",
+          "knowsAbout": ["Physics", "Cryptography", "Multiparty Computation", "Rust", "Smart Contracts", "Zero Knowledge"],
+          "sameAs": [
+            "https://twitter.com/[profile]",
+            "https://linkedin.com/in/[profile]",
+            "https://instagram.com/[profile]"
+          ]
+        },
+        {
+          "@type": "Person",
+          "name": "ARX-c5c4f246e705eaf8",
+          "jobTitle": "Senior Cryptography Engineer",
+          "honorificPrefix": "Dr.",
+          "description": "PhD in operations research, main contributor to Cingulata (first compilation chain for FHE), expert in privacy-preserving computations.",
+          "educationalCredential": "PhD in Operations Research",
+          "workHistory": "Cingulata (FHE compilation tools)",
+          "knowsAbout": ["Fully Homomorphic Encryption", "Applied Cryptography", "Multi-Party Computation", "Privacy-Preserving Algorithms", "Operations Research"],
+          "sameAs": [
+            "https://twitter.com/[profile]",
+            "https://linkedin.com/in/[profile]",
+            "https://instagram.com/[profile]"
+          ]
+        },
+        {
+          "@type": "Person",
+          "name": "ARX-1befae6fa3074d09",
+          "jobTitle": "Senior Machine Learning Engineer",
+          "honorificPrefix": "Dr.",
+          "description": "PhD in algebraic geometry from EPFL, former ML Engineer at Inpher developing novel MPC algorithms for data science and machine learning.",
+          "alumniOf": "EPFL",
+          "educationalCredential": "PhD in Algebraic Geometry",
+          "workHistory": "Inpher (Machine Learning Engineer, 5 years)",
+          "knowsAbout": ["Machine Learning", "Algebraic Geometry", "Multi-Party Computation", "Data Science", "Cryptography"],
+          "sameAs": [
+            "https://twitter.com/[profile]",
+            "https://linkedin.com/in/[profile]",
+            "https://instagram.com/[profile]"
+          ]
+        }
+      ],
+      "department": [
+        {
+          "@type": "Organization",
+          "name": "Cryptography Team",
+          "description": "Leading development of Multi-Party Computation protocols and privacy-preserving algorithms"
+        },
+        {
+          "@type": "Organization", 
+          "name": "Machine Learning Team",
+          "description": "Developing MPC algorithms for data science and machine learning applications"
+        }
+      ],
+      "technology": [
+        "Multi-Party Computation (MPC)",
+        "Fully Homomorphic Encryption (FHE)", 
+        "Zero Knowledge Technology",
+        "Trusted Execution Environments (TEEs)",
+        "Rust Programming",
+        "Blockchain Protocols"
+      ],
+      "sameAs": [
+        "https://twitter.com/arcium",
+        "https://discord.gg/arcium",
+        "https://github.com/arcium",
+        "https://youtube.com/@arcium"
+      ],
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.arcium.com/team/",
+        "name": "Our Team - Arcium",
+        "description": "Meet the Arcium team - experts in cryptography, Multi-Party Computation, and decentralized computing technology."
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.arcium.com/team/",
+      "name": "Our Team",
+      "description": "Meet the Arcium team of cryptography and blockchain experts building the future of confidential computing.",
+      "url": "https://www.arcium.com/team/",
+      "mainEntity": {
+        "@id": "https://www.arcium.com/#organization"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.arcium.com/"
+          },
+          {
+            "@type": "ListItem", 
+            "position": 2,
+            "name": "Our Team",
+            "item": "https://www.arcium.com/team/"
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+## Schema Summary
+**Schema Types Used:**
+- **TechnologyCompany**: Most specific type for Arcium as a blockchain/crypto technology company
+- **Person**: For all team members with ARX-anonymized names
+- **WebPage**: For the team page itself
+- **BreadcrumbList**: For navigation structure
+- **Organization**: For internal departments
+
+## Key Optimizations
+1. **AI Search Visibility**: Rich descriptions (150-160 chars) optimized for AI snippets
+2. **Expertise Mapping**: Detailed "knowsAbout" arrays for each person's technical expertise
+3. **Educational Background**: Alumni and credential information for authority
+4. **Technology Stack**: Comprehensive technology array for technical searches
+5. **Social Signals**: Placeholder sameAs arrays for social media profiles
+6. **Hierarchical Structure**: Clear founder vs employee distinction
+
+## ARX Token Mapping
+| ARX Token | Type | Schema Property | Schema Location |
+|-----------|------|-----------------|-----------------|
+| ARX-f1d350bc82145878 | person_name | name | founder[0].name (CEO) |
+| ARX-a8e1b878b8eabe22 | person_name | name | founder[1].name (CSO) |
+| ARX-0a2d15c2b94e656a | person_name | name | founder[2].name (CTO) |
+| ARX-c1a27e526fb59037 | person_name | name | founder[3].name (COO) |
+| ARX-e92aa427747d5983 | person_name | name | employee[0].name (Sr. Crypto Engineer) |
+| ARX-c5c4f246e705eaf8 | person_name | name | employee[1].name (Dr., Sr. Crypto Engineer) |
+| ARX-1befae6fa3074d09 | person_name | name | employee[2].name (Dr., Sr. ML Engineer) |
+| ARX-645610e51672062d | person_name | name | [Context suggests role title] |
+| ARX-f76cb18c0cfdb069 | person_name | name | [Context suggests role title] |
+| ARX-9316cd4
